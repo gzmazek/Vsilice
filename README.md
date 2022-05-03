@@ -1,2 +1,2 @@
 # Vsilice
-Igrica
+Igrica za male.
