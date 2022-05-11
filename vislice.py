@@ -21,5 +21,4 @@ def nova_igra():
 def pokazi_igro(id_igre):
     return bottle.template("igra", igra=vislice.igre[id_igre][0])
 
-
 bottle.run(reloader=True, debug=True)
