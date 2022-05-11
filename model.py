@@ -1,6 +1,31 @@
+import uuid
+
 STEVILO_DOVOLJENIH_NAPAK = 10
 PRAVILNA_CRKA, PONOVLJENA_CRKA, NAPACNA_CRKA = '+', 'o', '-'
 ZMAGA, PORAZ = 'W', 'X'
+ZACETEK = "Z"
+
+class Vislice:
+    def __init__(self):
+        self.igre = {}
+    
+    def prost_id_igre(self):
+        while True:
+            kandidat = uuid.uuid4().int
+            if kandidat not in self.igre:
+                return kandidat
+    
+    def nova_igra(self):
+        igra = nova_igra()
+        id = self.prost_id_igre()
+        self.igre.update({id: (igra, ZACETEK)})
+        return id
+    
+    def ugibaj(self, id_igre, crka):
+        igra = self.igre[id_igre][0]
+        novo_stanje = igra.ugibaj(crka)
+        self.igre[id_igre] = (igra, novo_stanje)
+
 
 class Igra:
     def __init__(self, geslo: str, crke=[]):
